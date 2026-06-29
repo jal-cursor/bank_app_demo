@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-poppins: 'Poppins', sans-serif;
+
+  --color-primary: #3629b7;
+  --color-primary-light: #4d8df6;
+  --color-primary-violet: #6c4bf4;
+  --color-semantic-red: #ff4267;
+  --color-semantic-blue: #0890fe;
+  --color-semantic-amber: #ffaf2a;
+  --color-semantic-teal: #52d5ba;
+  --color-semantic-orange: #fb6b18;
+  --color-neutral: #898989;
+  --color-neutral-light: #979797;
+  --color-app-bg: #f8f8fa;
+  --color-input: #efefef;
+  --color-card-dark: #2a3653;
+  --color-card-muted: #6b7a99;
+
+  --shadow-card: 0 4px 30px #3629b712;
+  --shadow-card-soft: 0 5px 30px #0000000d;
+
+  --radius-card: 20px;
+  --radius-tile: 16px;
+}
+
+@layer base {
+  body {
+    @apply m-0 min-h-screen bg-slate-200 font-poppins antialiased;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary-violet));
+  }
+
+  .gradient-card-dark {
+    background: linear-gradient(135deg, #1e2a45 0%, #3629b7 50%, #52d5ba 100%);
+  }
+
+  .gradient-card-blue {
+    background: linear-gradient(90deg, #4d8df6, #6c4bf4);
+  }
+
+  .gradient-bar {
+    background: linear-gradient(180deg, #4d8df6, #6c4bf4);
+  }
+}
