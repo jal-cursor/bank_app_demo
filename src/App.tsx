@@ -14,6 +14,7 @@ import { CardsPage } from './screens/main/CardsPage'
 import { TransactionReportPage } from './screens/main/TransactionReportPage'
 import { PlaceholderPage, TransactionHistoryPage } from './screens/main/TransactionHistoryPage'
 import { TransferContactsPage } from './screens/transfer/TransferContactsPage'
+import { TransferAmountPage } from './screens/transfer/TransferAmountPage'
 import { TransferConfirmPage } from './screens/transfer/TransferConfirmPage'
 import { TransferSuccessPage } from './screens/transfer/TransferSuccessPage'
 
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/report" element={<TransactionReportPage />} />
           <Route path="/history" element={<TransactionHistoryPage />} />
           <Route path="/transfer" element={<TransferContactsPage />} />
+          <Route path="/transfer/amount" element={<TransferAmountPage />} />
           <Route path="/transfer/confirm" element={<TransferConfirmRoute />} />
           <Route path="/search" element={<PlaceholderPage title="Search" />} />
           <Route path="/messages" element={<PlaceholderPage title="Messages" />} />

@@ -16,6 +16,10 @@ export function TransferConfirmPage() {
     return <Navigate to="/transfer" replace />
   }
 
+  if (!(transferDraft.amount > 0)) {
+    return <Navigate to="/transfer/amount" replace />
+  }
+
   return (
     <div className="flex h-full flex-col px-6 pt-10">
       <HeaderWithBack title="Transfer money to" />
