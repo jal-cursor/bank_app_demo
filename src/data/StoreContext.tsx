@@ -43,7 +43,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [transferDraft, setTransferDraft] = useState<TransferDraft>(defaultTransferDraft)
 
   const setTransferContact = useCallback((contactId: string) => {
-    setTransferDraft((d) => ({ ...d, contactId }))
+    setTransferDraft((d) => ({ ...d, contactId, amount: 0 }))
   }, [])
 
   const setTransferAmount = useCallback((amount: number) => {
