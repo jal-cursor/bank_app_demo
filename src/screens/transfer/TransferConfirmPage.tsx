@@ -1,23 +1,44 @@
+import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useStore } from '../../data/StoreContext'
 import { formatMoney } from '../../lib/format'
+import { AmountChip } from '../../components/AmountChip'
 import { Avatar } from '../../components/Avatar'
 import { Button } from '../../components/Button'
 import { HeaderWithBack } from '../../components/TopNav'
 import { ChevronDownIcon, MastercardMark } from '../../components/icons'
 
+const AMOUNT_PRESETS = [50, 100, 320, 500]
+
+function parseAmount(input: string): number {
+  const cleaned = input.replace(/[^0-9.]/g, '')
+  const parsed = Number.parseFloat(cleaned)
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
 export function TransferConfirmPage() {
   const navigate = useNavigate()
-  const { transferDraft, getContact, getCard, setSourceCard } = useStore()
+  const { transferDraft, getContact, getCard, setSourceCard, setTransferAmount } = useStore()
   const contact = transferDraft.contactId ? getContact(transferDraft.contactId) : null
   const sourceCard = transferDraft.sourceCardId ? getCard(transferDraft.sourceCardId) : null
+
+  const [amountText, setAmountText] = useState(() =>
+    transferDraft.amount ? String(transferDraft.amount) : '',
+  )
 
   if (!contact) {
     return <Navigate to="/transfer" replace />
   }
 
-  if (!(transferDraft.amount > 0)) {
-    return <Navigate to="/transfer/amount" replace />
+  const handleAmountChange = (value: string) => {
+    const sanitized = value.replace(/[^0-9.]/g, '')
+    setAmountText(sanitized)
+    setTransferAmount(parseAmount(sanitized))
+  }
+
+  const selectPreset = (preset: number) => {
+    setAmountText(String(preset))
+    setTransferAmount(preset)
   }
 
   return (
@@ -27,10 +48,29 @@ export function TransferConfirmPage() {
         <Avatar src={contact.avatarUrl} alt={contact.name} size={62} />
         <p className="mt-4 text-sm font-semibold text-slate-900">{contact.name}</p>
         <p className="text-xs text-neutral">{contact.cardMasked}</p>
-        <p className="mt-6 text-4xl font-semibold text-slate-900">
-          {formatMoney(transferDraft.amount)}
-        </p>
+        <div className="mt-6 flex items-baseline justify-center text-4xl font-semibold text-slate-900">
+          <span>$</span>
+          <input
+            type="text"
+            inputMode="decimal"
+            aria-label="Transfer amount"
+            value={amountText}
+            onChange={(e) => handleAmountChange(e.target.value)}
+            placeholder="0.00"
+            className="w-40 bg-transparent text-center outline-none placeholder:text-slate-300"
+          />
+        </div>
         <p className="text-xs text-neutral">No fee</p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          {AMOUNT_PRESETS.map((preset) => (
+            <AmountChip
+              key={preset}
+              amount={preset}
+              active={transferDraft.amount === preset}
+              onClick={() => selectPreset(preset)}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="mt-10">

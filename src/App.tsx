@@ -13,8 +13,8 @@ import { AccountPage } from './screens/main/AccountPage'
 import { CardsPage } from './screens/main/CardsPage'
 import { TransactionReportPage } from './screens/main/TransactionReportPage'
 import { PlaceholderPage, TransactionHistoryPage } from './screens/main/TransactionHistoryPage'
+import { PayBillPage } from './screens/main/PayBillPage'
 import { TransferContactsPage } from './screens/transfer/TransferContactsPage'
-import { TransferAmountPage } from './screens/transfer/TransferAmountPage'
 import { TransferConfirmPage } from './screens/transfer/TransferConfirmPage'
 import { TransferSuccessPage } from './screens/transfer/TransferSuccessPage'
 
@@ -39,14 +39,13 @@ export default function App() {
           <Route path="/report" element={<TransactionReportPage />} />
           <Route path="/history" element={<TransactionHistoryPage />} />
           <Route path="/transfer" element={<TransferContactsPage />} />
-          <Route path="/transfer/amount" element={<TransferAmountPage />} />
           <Route path="/transfer/confirm" element={<TransferConfirmRoute />} />
           <Route path="/search" element={<PlaceholderPage title="Search" />} />
           <Route path="/messages" element={<PlaceholderPage title="Messages" />} />
           <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
           <Route path="/withdraw" element={<PlaceholderPage title="Withdraw" />} />
           <Route path="/recharge" element={<PlaceholderPage title="Mobile Recharge" />} />
-          <Route path="/paybill" element={<PlaceholderPage title="Pay Bill" />} />
+          <Route path="/paybill" element={<PayBillPage />} />
         </Route>
 
         <Route

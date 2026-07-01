@@ -35,7 +35,7 @@ export function TransferContactsPage() {
             contact={contact}
             onSelect={() => {
               setTransferContact(contact.id)
-              navigate('/transfer/amount')
+              navigate('/transfer/confirm')
             }}
           />
         ))}

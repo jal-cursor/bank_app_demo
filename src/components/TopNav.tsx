@@ -4,30 +4,43 @@ import { ChevronLeftIcon } from './icons'
 interface TopNavProps {
   title: string
   variant?: 'black' | 'white' | 'gradient'
+  size?: 'default' | 'large'
   onBack?: () => void
   showBack?: boolean
 }
 
-export function TopNav({ title, variant = 'black', onBack, showBack = true }: TopNavProps) {
+export function TopNav({
+  title,
+  variant = 'black',
+  size = 'default',
+  onBack,
+  showBack = true,
+}: TopNavProps) {
   const navigate = useNavigate()
 
   const textColor =
     variant === 'white' ? 'text-white' : variant === 'gradient' ? 'text-white' : 'text-slate-900'
 
+  const isLarge = size === 'large'
+
   return (
-    <header className={`flex h-[53px] items-center px-6 ${textColor}`}>
+    <header
+      className={`flex items-center px-6 ${textColor} ${isLarge ? 'h-16 gap-3' : 'h-[53px]'}`}
+    >
       {showBack ? (
         <button
           type="button"
           aria-label="Go back"
           onClick={onBack ?? (() => navigate(-1))}
-          className="flex items-center gap-2"
+          className={`flex items-center ${isLarge ? 'gap-3' : 'gap-2'}`}
         >
-          <ChevronLeftIcon size={20} />
-          <span className="text-base font-medium">{title}</span>
+          <ChevronLeftIcon size={isLarge ? 24 : 20} />
+          <span className={isLarge ? 'text-2xl font-semibold' : 'text-base font-medium'}>
+            {title}
+          </span>
         </button>
       ) : (
-        <h1 className="text-xl font-semibold">{title}</h1>
+        <h1 className={isLarge ? 'text-2xl font-semibold' : 'text-xl font-semibold'}>{title}</h1>
       )}
     </header>
   )
