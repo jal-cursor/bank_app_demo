@@ -99,6 +99,6 @@ export const moneyOutTotal = 567.25
 
 export const defaultTransferDraft: TransferDraft = {
   contactId: null,
-  amount: 320,
+  amount: 0,
   sourceCardId: 'c2',
 }
