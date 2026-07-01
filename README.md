@@ -11,6 +11,12 @@ npm run dev
 
 Open the URL shown in the terminal. The app renders inside a 430×932 phone frame.
 
+## CI/CD pipelines
+
+Setting up automated build, test, and deploy pipelines? See
+[docs/ci-cd-pipeline-setup.md](docs/ci-cd-pipeline-setup.md). Starter GitHub
+Actions workflows live in [`.github/workflows/`](.github/workflows).
+
 ## Build
 
 ```bash
@@ -28,3 +34,11 @@ npm run preview
 - Transaction history
 
 Tab destinations Search, Messages, and Settings are placeholders for a later phase.
+
+## Documentation
+
+- [Pipeline setup guide](docs/pipelines.md) — CI/CD for lint, build, and deploy
+
+## Docs
+
+- [Setting up pipelines](docs/pipelines.md) — add multi-step flows (transfer is the reference)
