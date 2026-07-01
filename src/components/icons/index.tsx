@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react'
+import type { ReactNode, SVGProps } from 'react'
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number }
 
@@ -179,5 +179,70 @@ export function TrendUpIcon(props: IconProps) {
     <svg {...base({ size: 16, ...props })}>
       <path d="M2 12L6 8L10 10L14 4L22 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  )
+}
+
+type ArtProps = { className?: string }
+
+function BillArtFrame({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <svg
+      width={96}
+      height={80}
+      viewBox="0 0 96 80"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
+      <ellipse cx="48" cy="70" rx="40" ry="6" fill="#3629B7" opacity="0.08" />
+      {children}
+    </svg>
+  )
+}
+
+export function ElectricBillArt({ className }: ArtProps) {
+  return (
+    <BillArtFrame className={className}>
+      <rect x="40" y="10" width="30" height="54" rx="7" fill="#6C4BF4" />
+      <rect x="43" y="14" width="24" height="46" rx="4" fill="#F2F1F9" />
+      <rect x="48" y="20" width="14" height="30" rx="3" fill="#FFAF2A" />
+      <path d="M52 24V34H50L54 44V36H52L54 24Z" fill="#FB6B18" />
+      <path d="M22 32C18 32 16 35 16 38C16 41 18 44 22 44" stroke="#343434" strokeWidth="2.5" strokeLinecap="round" />
+      <circle cx="24" cy="32" r="2.5" fill="#343434" />
+      <circle cx="24" cy="44" r="2.5" fill="#343434" />
+      <circle cx="78" cy="42" r="9" fill="#FFAF2A" />
+      <path d="M78 34C73.5 34 71 37 71 40.5C71 43 72.5 44.5 73.5 46H82.5C83.5 44.5 85 43 85 40.5C85 37 82.5 34 78 34Z" fill="#FFD37A" />
+      <rect x="75" y="46" width="6" height="4" rx="1" fill="#FB6B18" />
+    </BillArtFrame>
+  )
+}
+
+export function WaterBillArt({ className }: ArtProps) {
+  return (
+    <BillArtFrame className={className}>
+      <rect x="40" y="8" width="30" height="54" rx="7" fill="#4D8DF6" />
+      <rect x="43" y="12" width="24" height="46" rx="4" fill="#EAF2FE" />
+      <path d="M50 22H60V25H56V30" stroke="#6C4BF4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M56 34C53 37.5 51 40.5 51 43.5C51 46 53.2 48 56 48C58.8 48 61 46 61 43.5C61 40.5 59 37.5 56 34Z" fill="#4D8DF6" />
+      <path d="M24 44C20 47.5 18 50.5 18 53.5C18 56 20.2 58 23 58C25.8 58 28 56 28 53.5C28 50.5 26 47.5 24 44Z" fill="#4D8DF6" />
+      <circle cx="78" cy="48" r="10" fill="#FFAF2A" />
+      <circle cx="78" cy="48" r="7" fill="#FFD37A" />
+      <path d="M78 44V52M75.5 46.5H80.5" stroke="#FB6B18" strokeWidth="2" strokeLinecap="round" />
+    </BillArtFrame>
+  )
+}
+
+export function InternetBillArt({ className }: ArtProps) {
+  return (
+    <BillArtFrame className={className}>
+      <rect x="46" y="8" width="30" height="54" rx="7" fill="#6C4BF4" />
+      <rect x="49" y="12" width="24" height="46" rx="4" fill="#F2F1F9" />
+      <rect x="54" y="18" width="14" height="30" rx="3" fill="#F2F1F9" stroke="#FF4267" strokeWidth="1.5" />
+      <rect x="56" y="34" width="10" height="12" rx="2" fill="#FF4267" />
+      <rect x="59" y="15" width="4" height="2" rx="1" fill="#FF4267" />
+      <rect x="16" y="42" width="26" height="18" rx="3" fill="#4D8DF6" opacity="0.9" />
+      <circle cx="29" cy="51" r="7" fill="#FFAF2A" />
+      <path d="M29 47V55M26.5 49.5H31.5" stroke="#FB6B18" strokeWidth="2" strokeLinecap="round" />
+    </BillArtFrame>
   )
 }

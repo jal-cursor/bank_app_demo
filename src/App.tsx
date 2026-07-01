@@ -13,6 +13,7 @@ import { AccountPage } from './screens/main/AccountPage'
 import { CardsPage } from './screens/main/CardsPage'
 import { TransactionReportPage } from './screens/main/TransactionReportPage'
 import { PlaceholderPage, TransactionHistoryPage } from './screens/main/TransactionHistoryPage'
+import { PayBillPage } from './screens/main/PayBillPage'
 import { TransferContactsPage } from './screens/transfer/TransferContactsPage'
 import { TransferConfirmPage } from './screens/transfer/TransferConfirmPage'
 import { TransferSuccessPage } from './screens/transfer/TransferSuccessPage'
@@ -44,7 +45,7 @@ export default function App() {
           <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
           <Route path="/withdraw" element={<PlaceholderPage title="Withdraw" />} />
           <Route path="/recharge" element={<PlaceholderPage title="Mobile Recharge" />} />
-          <Route path="/paybill" element={<PlaceholderPage title="Pay Bill" />} />
+          <Route path="/paybill" element={<PayBillPage />} />
         </Route>
 
         <Route
