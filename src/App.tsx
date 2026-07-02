@@ -16,6 +16,9 @@ import { PlaceholderPage, TransactionHistoryPage } from './screens/main/Transact
 import { TransferContactsPage } from './screens/transfer/TransferContactsPage'
 import { TransferConfirmPage } from './screens/transfer/TransferConfirmPage'
 import { TransferSuccessPage } from './screens/transfer/TransferSuccessPage'
+import { WithdrawPage } from './screens/withdraw/WithdrawPage'
+import { WithdrawConfirmPage } from './screens/withdraw/WithdrawConfirmPage'
+import { WithdrawSuccessPage } from './screens/withdraw/WithdrawSuccessPage'
 
 function TransferConfirmRoute() {
   return <TransferConfirmPage />
@@ -39,10 +42,11 @@ export default function App() {
           <Route path="/history" element={<TransactionHistoryPage />} />
           <Route path="/transfer" element={<TransferContactsPage />} />
           <Route path="/transfer/confirm" element={<TransferConfirmRoute />} />
+          <Route path="/withdraw" element={<WithdrawPage />} />
+          <Route path="/withdraw/confirm" element={<WithdrawConfirmPage />} />
           <Route path="/search" element={<PlaceholderPage title="Search" />} />
           <Route path="/messages" element={<PlaceholderPage title="Messages" />} />
           <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
-          <Route path="/withdraw" element={<PlaceholderPage title="Withdraw" />} />
           <Route path="/recharge" element={<PlaceholderPage title="Mobile Recharge" />} />
           <Route path="/paybill" element={<PlaceholderPage title="Pay Bill" />} />
         </Route>
@@ -53,6 +57,17 @@ export default function App() {
             <PhoneFrame>
               <div className="h-full bg-app-bg">
                 <TransferSuccessPage />
+              </div>
+            </PhoneFrame>
+          }
+        />
+
+        <Route
+          path="/withdraw/success"
+          element={
+            <PhoneFrame>
+              <div className="h-full bg-app-bg">
+                <WithdrawSuccessPage />
               </div>
             </PhoneFrame>
           }

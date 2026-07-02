@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, type InputHTMLAttributes, type ReactNode } from 'react'
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -6,19 +6,17 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   rightIcon?: ReactNode
 }
 
-export function TextField({
-  label,
-  active = false,
-  rightIcon,
-  className = '',
-  ...props
-}: TextFieldProps) {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextField(
+  { label, active = false, rightIcon, className = '', ...props },
+  ref,
+) {
   if (label) {
     return (
       <div className="flex flex-col gap-2">
         <label className="text-xs font-medium text-neutral">{label}</label>
         <div className="relative">
           <input
+            ref={ref}
             className={`h-11 w-full rounded-xl border bg-input px-4 text-sm text-slate-800 outline-none ${
               active ? 'border-primary' : 'border-transparent'
             } ${className}`}
@@ -37,6 +35,7 @@ export function TextField({
   return (
     <div className="relative">
       <input
+        ref={ref}
         className={`h-11 w-full rounded-full border bg-white px-4 text-sm text-slate-800 outline-none ${
           active ? 'border-primary' : 'border-slate-200'
         } ${className}`}
@@ -47,4 +46,4 @@ export function TextField({
       )}
     </div>
   )
-}
+})

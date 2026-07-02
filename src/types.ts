@@ -69,3 +69,8 @@ export interface TransferDraft {
   amount: Money
   sourceCardId: string | null
 }
+
+export interface WithdrawDraft {
+  cardId: string | null
+  amount: Money
+}

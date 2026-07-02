@@ -6,6 +6,7 @@ import type {
   Transaction,
   TransferDraft,
   User,
+  WithdrawDraft,
 } from '../types'
 
 export const mockUser: User = {
@@ -102,3 +103,11 @@ export const defaultTransferDraft: TransferDraft = {
   amount: 320,
   sourceCardId: 'c2',
 }
+
+export const defaultWithdrawDraft: WithdrawDraft = {
+  cardId: null,
+  amount: 0,
+}
+
+export const withdrawAmounts = [10, 50, 100, 150, 200] as const
+
