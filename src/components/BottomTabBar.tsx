@@ -16,20 +16,14 @@ export function BottomTabBar() {
           key={to}
           to={to}
           end={end}
+          aria-label={label}
           className={({ isActive }) =>
             isActive
-              ? 'gradient-primary flex items-center gap-2 rounded-full px-5 py-2.5 text-white shadow-card'
+              ? 'gradient-primary flex items-center justify-center rounded-full p-2.5 text-white shadow-card'
               : 'flex items-center justify-center p-2.5 text-neutral'
           }
         >
-          {({ isActive }) => (
-            <>
-              <Icon size={22} />
-              {isActive && label === 'Home' && (
-                <span className="text-sm font-medium">{label}</span>
-              )}
-            </>
-          )}
+          <Icon size={22} />
         </NavLink>
       ))}
     </nav>
